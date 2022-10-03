@@ -5,48 +5,51 @@
       Form invalid ? {{myForm.valid}}
     </div>
   
+    <!-- TITRE -->
     <fieldset>
       <label for="title-order">Title</label>
       <input id="title-order" name="title-order" type="text" [(ngModel)]="model.title" #title="ngModel" required minlength="5" maxlength="30"/>
     </fieldset>
   
-    <!-- Message d'erreurs de title -->
-    <div *ngIf="title.errors">
+   
+    <div *ngIf="title.errors && myForm.submitted">  <!-- Message d'erreurs de title -->
       <span *ngIf="title.errors?.['required']">Le titre est requis</span>
       <span *ngIf="title.errors?.['minlength']">La longueur minimale doit être supérieure à 5</span>
       <span *ngIf="title.errors?.['maxlength']">La longueur maximale doit être inférieure à 30</span>
     </div>
   
-  
+    <!-- QUANTITÉ -->
     <fieldset>
       <label for="quantity-order">Quantité</label>
       <input id="quantity-order" name="quantity-order" [(ngModel)]="model.quantity" #quantity="ngModel" type="number" required>
     </fieldset>
   
-   <!-- Message d'erreurs de quantity -->
-    <div *ngIf="quantity.errors">
+
+    <div *ngIf="quantity.errors && myForm.submitted">   <!-- Message d'erreurs de quantity -->
       <span *ngIf="quantity.errors?.['required']">Le champ quantité est requis</span>
     </div>
   
   
+    <!-- DATE -->
     <fieldset>
       <label for="date-order">Date de commande</label>
       <input id="date-order" name="date-order" type="date" [(ngModel)]="model.date" #date="ngModel" required>
     </fieldset>
   
-  <!-- Message d'erreurs de date -->
-    <div *ngIf="date.errors">
+
+    <div *ngIf="date.errors && myForm.submitted">  <!-- Message d'erreurs de date -->
       <span *ngIf="date.errors?.['required']">Le champ email est requis</span>
     </div>
   
   
+    <!-- CONTACT -->
     <fieldset>
       <label for="contact-order">Contact</label>
       <input id="contact-order" name="contact-order" type="email" [(ngModel)]="model.contact" #contact="ngModel" required email>
     </fieldset>
   
-    <!-- Message d'erreurs de contact -->
-    <div *ngIf="contact.errors">
+
+    <div *ngIf="contact.errors && myForm.submitted">    <!-- Message d'erreurs de contact -->
       <span *ngIf="contact.errors?.['required']">Le champ email est requis</span>
       <span *ngIf="contact.errors?.['email']">L'adresse email doit être valide</span>
     </div>
